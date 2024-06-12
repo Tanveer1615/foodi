@@ -1,0 +1,21 @@
+[debug] [2024-06-12T06:25:11.198Z] ----------------------------------------------------------------------
+[debug] [2024-06-12T06:25:11.203Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\tanve\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2024-06-12T06:25:11.203Z] CLI Version:   13.11.2
+[debug] [2024-06-12T06:25:11.204Z] Platform:      win32
+[debug] [2024-06-12T06:25:11.204Z] Node Version:  v20.12.2
+[debug] [2024-06-12T06:25:11.204Z] Time:          Wed Jun 12 2024 11:55:11 GMT+0530 (India Standard Time)
+[debug] [2024-06-12T06:25:11.205Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-06-12T06:25:11.217Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-06-12T06:25:11.218Z] > authorizing via signed-in user (ta91507@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  D:\Next js\FoodOrdering\ct\food-ordering
+
