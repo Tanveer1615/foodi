@@ -14,7 +14,7 @@ export default function MenuItemTile({ onAddToCart, ...item }) {
         <img
           src={image}
           className="max-h-auto max-h-24 block mx-auto"
-          alt="pizza"
+          alt={image}
         />
       </div>
       <h4 className="font-semibold text-xl my-3">{name}</h4>
