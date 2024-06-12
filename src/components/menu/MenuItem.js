@@ -1,8 +1,11 @@
+"use client";
 import { CartContext } from "@/components/AppContext";
 import MenuItemTile from "@/components/menu/MenuItemTile";
 import Image from "next/image";
 import { useContext, useState } from "react";
 import FlyingButton from "react-flying-item";
+import { useSession } from "next-auth/react";
+import toast from "react-hot-toast";
 
 export default function MenuItem(menuItem) {
   const { image, name, description, basePrice, sizes, extraIngredientPrices } =
@@ -11,17 +14,23 @@ export default function MenuItem(menuItem) {
   const [selectedExtras, setSelectedExtras] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
   const { addToCart } = useContext(CartContext);
+  const session = useSession();
+  const status = session?.status;
 
   async function handleAddToCartButtonClick() {
-    const hasOptions = sizes.length > 0 || extraIngredientPrices.length > 0;
-    if (hasOptions && !showPopup) {
-      setShowPopup(true);
-      return;
-    }
-    addToCart(menuItem, selectedSize, selectedExtras);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    if (status == "unauthenticated") {
+      toast.error("Please Login");
+    } else {
+      const hasOptions = sizes.length > 0 || extraIngredientPrices.length > 0;
+      if (hasOptions && !showPopup) {
+        setShowPopup(true);
+        return;
+      }
+      addToCart(menuItem, selectedSize, selectedExtras);
+      await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    setShowPopup(false);
+      setShowPopup(false);
+    }
   }
   function handleExtraThingClick(ev, extraThing) {
     const checked = ev.target.checked;
