@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useContext, useState } from "react";
 import { usePathname } from "next/navigation";
 import { signIn } from "next-auth/react";
+import Image from "next/image";
 
 function AuthLinks({ status, userName }) {
   if (status === "authenticated") {
@@ -16,7 +17,10 @@ function AuthLinks({ status, userName }) {
           Hello, {userName}
         </Link>
         <button
-          onClick={() => signOut({ callbackUrl: "/" })}
+          onClick={() => {
+            signOut({ callbackUrl: "/" });
+            // location.reload();
+          }}
           className="bg-primary rounded-full text-white px-8 py-2"
         >
           Logout
@@ -49,14 +53,12 @@ export default function Header() {
   if (userName && userName.includes(" ")) {
     userName = userName.split(" ")[0];
   }
-  if ("/login" == usePathname() || "/register" == usePathname()) {
-    return "";
-  }
+
   return (
     <header>
       <div className="flex items-center md:hidden justify-between">
         <Link className="text-primary font-semibold text-2xl" href={"/"}>
-          ST PIZZA
+          <Image src={"/logo.png"} width={100} height={100} />
         </Link>
         <div className="flex gap-8 items-center">
           <Link href={"/cart"} className="relative">
@@ -90,7 +92,7 @@ export default function Header() {
       <div className="hidden md:flex items-center justify-between">
         <nav className="flex items-center gap-8 text-gray-500 font-semibold">
           <Link className="text-primary font-semibold text-2xl" href={"/"}>
-            ST PIZZA
+            <Image src={"/logo.png"} width={100} height={100} />
           </Link>
           <Link href={"/"}>Home</Link>
           <Link href={"/menu"}>Menu</Link>

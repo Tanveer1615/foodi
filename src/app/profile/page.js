@@ -3,18 +3,18 @@ import Loader from "@/components/layout/Loader";
 import UserForm from "@/components/layout/UserForm";
 import UserTabs from "@/components/layout/UserTabs";
 import { useSession } from "next-auth/react";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 export default function ProfilePage() {
   const session = useSession();
+  const nav = useRouter();
 
   const [user, setUser] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
   const [profileFetched, setProfileFetched] = useState(false);
   const { status } = session;
-  
 
   useEffect(() => {
     if (status === "authenticated") {
@@ -47,6 +47,7 @@ export default function ProfilePage() {
       success: "Profile saved!",
       error: "Error",
     });
+    nav.push("/");
   }
 
   if (status === "loading" || !profileFetched) {

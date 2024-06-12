@@ -30,7 +30,7 @@ export default function OrdersPage() {
     return (
       <section className="mt-8 text-center">
         <SectionHeaders mainHeader="Orders" />
-        <p className="mt-4">Your's Order in empty 😔</p>
+        <p className="mt-4">Your &#39;s Order in empty 😔</p>
       </section>
     );
   }
